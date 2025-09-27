@@ -1,0 +1,19 @@
+name: Supabase Deploy
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          access-token: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - name: Link to Supabase project
+        run: supabase link --project-ref ${{ secrets.SUPABASE_PROJECT_REF }}
+      - name: Run DB changes
+        run: supabase db push
+      - name: Deploy functions
+        run: supabase functions deploy

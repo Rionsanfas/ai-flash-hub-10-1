@@ -1,0 +1,8 @@
+-- Test migration to verify GitHub workflow
+CREATE TABLE IF NOT EXISTS workflow_test (
+  id SERIAL PRIMARY KEY,
+  message TEXT DEFAULT 'Workflow works!'
+);
+
+-- Insert a sample row
+INSERT INTO workflow_test (message) VALUES ('Hello from GitHub CI/CD!');

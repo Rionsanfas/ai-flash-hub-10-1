@@ -1,9 +1,0 @@
--- Supabase workflow test migration
-CREATE TABLE IF NOT EXISTS ci_cd_test (
-  test_id SERIAL PRIMARY KEY,
-  created_at TIMESTAMPTZ DEFAULT now(),
-  note TEXT DEFAULT 'Supabase CI/CD is connected!'
-);
-
--- Insert a row for visibility
-INSERT INTO ci_cd_test (note) VALUES ('Migration ran successfully on GitHub Actions.');
